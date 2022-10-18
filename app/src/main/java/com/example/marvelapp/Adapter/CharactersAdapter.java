@@ -1,4 +1,4 @@
-package com.example.marvelapp;
+package com.example.marvelapp.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.RequestManager;
+import com.example.marvelapp.Repo.Remote.CharacterModel;
+import com.example.marvelapp.UI.DetailsPage;
+import com.example.marvelapp.R;
 
 import java.util.List;
 
@@ -50,7 +51,8 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.Vi
 
 //        Log.d("TAG", "here:"+data.get(holder.getAdapterPosition()).getImageUrl());
 
-        holder.charImage.setOnClickListener(new View.OnClickListener() {
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailsPage.class);

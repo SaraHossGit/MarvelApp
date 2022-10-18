@@ -3,8 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio/MarvelApp/app/src/main/res/layout/activity_details_page.xml" value="0.2" />
-        <entry key="..\:/Android Studio/MarvelApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android Studio/MarvelApp/app/src/main/res/layout/activity_details_page.xml" value="0.1" />
+        <entry key="..\:/Android Studio/MarvelApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Android Studio/MarvelApp/app/src/main/res/layout/rec_view_item.xml" value="0.6" />
       </map>
     </option>

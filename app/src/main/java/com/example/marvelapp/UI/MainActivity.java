@@ -1,13 +1,19 @@
-package com.example.marvelapp;
+package com.example.marvelapp.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
+
+import com.example.marvelapp.Adapter.CharactersAdapter;
+import com.example.marvelapp.R;
+import com.example.marvelapp.Repo.Remote.CharacterModel;
+import com.example.marvelapp.Retrofit.RetrofitClient;
+import com.example.marvelapp.ViewModel.CharactersViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +25,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView1, recyclerView2;
+    CharactersViewModel charactersVM;
 
 //    Heróis_recycler_view
 //    Vilões_recycler_view
@@ -34,21 +41,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerView1 = findViewById(R.id.Heróis_recycler_view);
         recyclerView2 = findViewById(R.id.Vilões_recycler_view);
 
+        /// [Previous steps in ViewModel Class]
+        /// STEP(4): Load Data into recycler view (in Main Activity)
+        charactersVM = new ViewModelProvider(this).get(CharactersViewModel.class);
         getData();
     }
 
     private void getData() {
 
-        Call<List<CharacterModel>> call = RetrofitClient.getInstance().getMyAPI().getUsers();
-        call.enqueue(new Callback<List<CharacterModel>>() {
+        charactersVM.getCharactersList().observe(this, new Observer<List<CharacterModel>>() {
             @Override
-            public void onResponse(Call<List<CharacterModel>> call, Response<List<CharacterModel>> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "Code is :" +String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            public void onChanged(List<CharacterModel> characters) {
 
-                List<CharacterModel> characters = response.body();
+                // Append into 2 different RecyclerViews
                 ArrayList<CharacterModel> characters1 =  new ArrayList<>();
                 ArrayList<CharacterModel> characters2  = new ArrayList<>();
 
@@ -61,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-
                 CharactersAdapter charactersAdapter = new CharactersAdapter(MainActivity.this,characters1);
                 recyclerView1.setAdapter(charactersAdapter);
                 recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false));
@@ -69,14 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 CharactersAdapter charactersAdapter2 = new CharactersAdapter(MainActivity.this,characters2);
                 recyclerView2.setAdapter(charactersAdapter2);
                 recyclerView2.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false));
-
-            }
-
-            @Override
-            public void onFailure(Call<List<CharacterModel>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 

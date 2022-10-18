@@ -1,4 +1,6 @@
-package com.example.marvelapp;
+package com.example.marvelapp.Retrofit;
+
+import com.example.marvelapp.Repo.Remote.CharacterModel;
 
 import java.util.List;
 
@@ -11,5 +13,5 @@ public interface MyAPI {
     @GET("marvel") // @TypeOfRequest(EndPoint)
 
     // The return value wraps the response in a Call object with the type of the expected result (DataModel)
-    Call<List<CharacterModel>> getUsers(); // Call <List <DataModel> > method
+    Call<List<CharacterModel>> getCharacters(); // Call <List <DataModel> > method
 }

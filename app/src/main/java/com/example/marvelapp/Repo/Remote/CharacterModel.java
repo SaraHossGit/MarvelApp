@@ -1,4 +1,4 @@
-package com.example.marvelapp;
+package com.example.marvelapp.Repo.Remote;
 
 import com.google.gson.annotations.SerializedName;
 

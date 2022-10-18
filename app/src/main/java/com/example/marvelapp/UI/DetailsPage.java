@@ -1,4 +1,4 @@
-package com.example.marvelapp;
+package com.example.marvelapp.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.marvelapp.R;
 
 public class DetailsPage extends AppCompatActivity {
 
