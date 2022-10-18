@@ -1,18 +1,11 @@
 package com.example.marvelapp.ViewModel;
 
-import android.widget.Toast;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.marvelapp.Adapter.CharactersAdapter;
 import com.example.marvelapp.Repo.Remote.CharacterModel;
 import com.example.marvelapp.Retrofit.RetrofitClient;
-import com.example.marvelapp.UI.MainActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

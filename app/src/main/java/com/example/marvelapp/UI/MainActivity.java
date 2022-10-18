@@ -1,26 +1,20 @@
 package com.example.marvelapp.UI;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.widget.Toast;
-
 import com.example.marvelapp.Adapter.CharactersAdapter;
 import com.example.marvelapp.R;
 import com.example.marvelapp.Repo.Remote.CharacterModel;
-import com.example.marvelapp.Retrofit.RetrofitClient;
 import com.example.marvelapp.ViewModel.CharactersViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
